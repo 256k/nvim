@@ -25,3 +25,6 @@ set.ignorecase=true
 set.mouse=a
 set.splitbelow=true
 set.signcolumn='auto:1-9'
+
+
+ vim.cmd("colorscheme nordfox")
