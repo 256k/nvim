@@ -30,3 +30,9 @@ keymap("n", "<C-k>", "10k", opt )
 
 keymap("n", "<Tab>", ":bn<cr>", opt )
 keymap("n", "<S-Tab>", ":bp<cr>", opt )
+
+-- nerdtree shortcuts:
+
+keymap("n", "<C-b>", ":NERDTreeToggle<cr>", opt)
+keymap("n", "<C-n>", ":NERDTreeFind<cr>", opt)
+

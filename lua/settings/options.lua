@@ -2,7 +2,6 @@ local set = vim.opt
 
 set.number = true
 set.relativenumber = true
-
 set.tabstop=2
 set.softtabstop=2
 set.shiftwidth=2
@@ -25,6 +24,5 @@ set.ignorecase=true
 set.mouse=a
 set.splitbelow=true
 set.signcolumn='auto:1-9'
+set.termguicolors=true
 
-
- vim.cmd("colorscheme nordfox")

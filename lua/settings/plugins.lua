@@ -1,18 +1,3 @@
-
--- " Plug 'airblade/vim-gitgutter'
--- " Plug 'tpope/vim-surround' " this is the select an object and surround it with brackets or change its surrounding brackets
--- " Plug 'nvim-lua/plenary.nvim' " required for telescope
--- " Plug 'nvim-telescope/telescope.nvim' " a fuzzy search plugin for neovim (fzf replacement)
--- " Plug 'EdenEast/nightfox.nvim' " color scheme
--- " Plug 'preservim/nerdtree' " tree folder manager
--- " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
--- " Plug 'glepnir/indent-guides.nvim' "indentation 
--- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
--- Plug 'junegunn/fzf.vim'
--- call plug#end()
-
-
-
 local fn = vim.fn
 
 -- Automatically install packer
@@ -56,12 +41,34 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
   -- My plugins here
+
+
+
+
+
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use 'EdenEast/nightfox.nvim'
-  use 'bluz71/vim-nightfly-guicolors'
-  use 'nvim-lua/plenary.nvim' 
-  use 'nvim-telescope/telescope.nvim' 
+  use 'EdenEast/nightfox.nvim' -- colorscheme
+  use 'nvim-lua/plenary.nvim'  -- useful for many plugins
+  use 'nvim-telescope/telescope.nvim' -- fuzzy finder
+  use 'preservim/nerdtree' -- file tree explorer
+
+  -- cmp plugins
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+
+  -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+  -- surround text with stuff
+  use 'tpope/vim-surround' 
+
+
+
   -- use { 'nvim-treesitter/nvim-treesitter' }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -69,3 +76,20 @@ return packer.startup(function(use)
     require("packer").sync()
   end
 end)
+
+
+
+
+
+-- " Plug 'airblade/vim-gitgutter'
+-- " Plug 'tpope/vim-surround' " this is the select an object and surround it with brackets or change its surrounding brackets
+-- " Plug 'nvim-lua/plenary.nvim' " required for telescope
+-- " Plug 'nvim-telescope/telescope.nvim' " a fuzzy search plugin for neovim (fzf replacement)
+-- " Plug 'EdenEast/nightfox.nvim' " color scheme
+-- " Plug 'preservim/nerdtree' " tree folder manager
+-- " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+-- " Plug 'glepnir/indent-guides.nvim' "indentation 
+-- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+-- Plug 'junegunn/fzf.vim'
+-- call plug#end()
+
