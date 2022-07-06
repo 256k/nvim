@@ -36,3 +36,9 @@ keymap("n", "<S-Tab>", ":bp<cr>", opt )
 keymap("n", "<C-b>", ":NERDTreeToggle<cr>", opt)
 keymap("n", "<C-n>", ":NERDTreeFind<cr>", opt)
 
+-- Telescope:
+
+keymap("n", "<C-p>", ":Telescope find_files<cr>", opt)
+keymap("n", "<C-f>", ":Telescope live_grep<cr>", opt)
+keymap("n", "<C-t>", ":Telescope buffers<cr>", opt)
+
