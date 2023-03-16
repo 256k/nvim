@@ -45,4 +45,4 @@ keymap("n", "<C-t>", ":Telescope buffers<cr>", opt)
 
 -- Rust commands:
 
-keymap("n", "<leader>rr", ":RustRun", opt)
+keymap("n", "<leader>rr", ":RustRun<cr>", opt)
