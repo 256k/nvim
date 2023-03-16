@@ -1,4 +1,4 @@
-vim.g.mapleader="`"
+vim.g.mapleader=" "
 
 local keymap = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true}
@@ -8,12 +8,13 @@ local opt = {noremap = true, silent = true}
 --
 
 -- reload config files:
-keymap("n", "<leader>r", ":luafile %<cr>", opt )
+keymap("n", "<leader>rl", ":luafile %<cr>", opt )
 
 
 -- splitting window:
-keymap("n", "<leader>vs", ":vsplit<cr>", opt )
-keymap("n", "<leader>s", ":split<cr>", opt )
+keymap("n", "<leader>wvs", ":vsplit<cr>", opt )
+keymap("n", "<leader>ws", ":split<cr>", opt )
+keymap("n", "<leader>wq", ":q<cr>", opt )
 
 -- split window navigation (CONTROL + SHIFT + h,j,k,l)
 keymap("n", "<C-H>", "<C-w>h", opt )
@@ -42,3 +43,6 @@ keymap("n", "<C-p>", ":Telescope find_files<cr>", opt)
 keymap("n", "<C-f>", ":Telescope live_grep<cr>", opt)
 keymap("n", "<C-t>", ":Telescope buffers<cr>", opt)
 
+-- Rust commands:
+
+keymap("n", "<leader>rr", ":RustRun", opt)
