@@ -28,21 +28,17 @@ keymap("n", "<C-j>", "10j", opt )
 keymap("n", "<C-k>", "10k", opt )
 
 -- buffer moving:
-
 keymap("n", "<Tab>", ":bn<cr>", opt )
 keymap("n", "<S-Tab>", ":bp<cr>", opt )
 
 -- nerdtree shortcuts:
-
 keymap("n", "<C-b>", ":NERDTreeToggle<cr>", opt)
 keymap("n", "<C-n>", ":NERDTreeFind<cr>", opt)
 
 -- Telescope:
-
 keymap("n", "<C-p>", ":Telescope find_files<cr>", opt)
 keymap("n", "<C-f>", ":Telescope live_grep<cr>", opt)
 keymap("n", "<C-t>", ":Telescope buffers<cr>", opt)
 
 -- Rust commands:
-
 keymap("n", "<leader>rr", ":RustRun<cr>", opt)

@@ -49,6 +49,7 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use 'EdenEast/nightfox.nvim' -- colorscheme
+  use { "ellisonleao/gruvbox.nvim" } -- colorscheme
   use 'nvim-lua/plenary.nvim'  -- useful for many plugins
   use 'nvim-telescope/telescope.nvim' -- fuzzy finder
   use 'preservim/nerdtree' -- file tree explorer
