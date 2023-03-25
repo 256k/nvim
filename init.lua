@@ -43,8 +43,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Config settings for nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 -- ----------------------------
 
 -- Install package manager
@@ -148,11 +148,8 @@ require('lazy').setup({
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    opts = {
-      flavour = 'latte',
-    },
     config = function()
-      vim.cmd.colorscheme 'catppuccin'
+      vim.cmd.colorscheme 'catppuccin-frappe'
     end,
   },
 
@@ -198,7 +195,7 @@ require('lazy').setup({
   },
 
   -- Nvim tree package. file sidebar tree
-  { 'nvim-tree/nvim-tree.lua',     opts = {} },
+  { 'nvim-tree/nvim-tree.lua',     opts = {open_on_setup = true,} },
   { 'nvim-tree/nvim-web-devicons', opts = {} },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
