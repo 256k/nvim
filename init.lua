@@ -217,7 +217,7 @@ require('lazy').setup({
   },
 
   -- Nvim tree package. file sidebar tree
-  { 'nvim-tree/nvim-tree.lua',     opts = { open_on_setup = true, } },
+  { 'nvim-tree/nvim-tree.lua',     opts = {} },
   { 'nvim-tree/nvim-web-devicons', opts = {} },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
