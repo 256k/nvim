@@ -96,7 +96,7 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-  {'simrat39/rust-tools.nvim'},
+  { 'simrat39/rust-tools.nvim' },
 
   {
     -- Autocompletion
@@ -105,7 +105,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',          opts = {} },
+  { 'folke/which-key.nvim',    opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -121,7 +121,28 @@ require('lazy').setup({
     },
   },
 
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v1.x',
+    dependencies = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' },         -- Required
+      { 'williamboman/mason.nvim' },       -- Optional
+      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },     -- Required
+      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'hrsh7th/cmp-buffer' },   -- Optional
+      { 'hrsh7th/cmp-path' },     -- Optional
+      { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+      { 'hrsh7th/cmp-nvim-lua' }, -- Optional
+
+      -- Snippets
+      { 'L3MON4D3/LuaSnip' },         -- Required
+      { 'rafamadriz/friendly-snippets' }, -- Optional
+    }
+  },
 
   {
     -- Theme inspired by Atom
@@ -132,19 +153,19 @@ require('lazy').setup({
     end,
   },
 
---   {
---     -- Set lualine as statusline
---     'nvim-lualine/lualine.nvim',
---     -- See `:help lualine.txt`
---     opts = {
---       options = {
---         icons_enabled = false,
---         theme = 'onedark',
---         component_separators = '|',
---         section_separators = '',
---       },
---     },
---   },
+  --   {
+  --     -- Set lualine as statusline
+  --     'nvim-lualine/lualine.nvim',
+  --     -- See `:help lualine.txt`
+  --     opts = {
+  --       options = {
+  --         icons_enabled = false,
+  --         theme = 'onedark',
+  --         component_separators = '|',
+  --         section_separators = '',
+  --       },
+  --     },
+  --   },
 
   {
     "catppuccin/nvim",
@@ -196,7 +217,7 @@ require('lazy').setup({
   },
 
   -- Nvim tree package. file sidebar tree
-  { 'nvim-tree/nvim-tree.lua',     opts = {open_on_setup = true,} },
+  { 'nvim-tree/nvim-tree.lua',     opts = { open_on_setup = true, } },
   { 'nvim-tree/nvim-web-devicons', opts = {} },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
