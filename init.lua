@@ -43,7 +43,7 @@ require('lazy').setup({
 
 
   -- TABNINE AI COMPLETION PLUGIN:
-  { 'codota/tabnine-nvim',     build = "./dl_binaries.sh" },
+  -- { 'codota/tabnine-nvim',     build = "./dl_binaries.sh" },
   -- ----------------------------
 
   -- Git related plugins
@@ -215,14 +215,14 @@ require('lazy').setup({
 }, {})
 
 
-  require('tabnine').setup({
-    disable_auto_comment = true,
-    accept_keymap = "<Tab>",
-    dismiss_keymap = "<C-]>",
-    debounce_ms = 800,
-    suggestion_color = { gui = "#808080", cterm = 244 },
-    exclude_filetypes = { "TelescopePrompt" }
-  })
+  -- require('tabnine').setup({
+  --   disable_auto_comment = true,
+  --   accept_keymap = "<Tab>",
+  --   dismiss_keymap = "<C-]>",
+  --   debounce_ms = 800,
+  --   suggestion_color = { gui = "#808080", cterm = 244 },
+  --   exclude_filetypes = { "TelescopePrompt" }
+  -- })
 require('lualine').setup({
     tabline = {
         lualine_a = {},
@@ -232,7 +232,7 @@ require('lualine').setup({
         lualine_y = {},
         lualine_z = {}
     },
-    sections = {lualine_c = {'lsp_progress'}, lualine_x = {'tabnine'}}
+    -- sections = {lualine_c = {'lsp_progress'}, lualine_x = {'tabnine'}}
 })
 -- [[ Setting options ]]
 -- See `:help vim.o`
