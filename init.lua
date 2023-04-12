@@ -3,7 +3,6 @@
 =====================================================================
 =======================  NEOVIM CONFIGURATION  ======================
 =====================================================================
-
 --]]
 --
 -- Set <space> as the leader key
@@ -39,21 +38,16 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
-
-
-  -- TABNINE AI COMPLETION PLUGIN:
-  -- { 'codota/tabnine-nvim',     build = "./dl_binaries.sh" },
-  -- ----------------------------
 
   -- Git related plugins
-      'tpope/vim-fugitive',
+  'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
+  {'akinsho/toggleterm.nvim', version = "*", config = true},
   --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
@@ -80,7 +74,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',          opts = {} },
+  { 'folke/which-key.nvim',    opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -88,7 +82,7 @@ require('lazy').setup({
       -- See `:help gitsigns.txt`
       signs = {
         add = { text = '+' },
-        change = { text = '~' },
+        change = { text = '*' },
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
@@ -129,19 +123,19 @@ require('lazy').setup({
     end,
   },
 
-     {
-       -- Set lualine as statusline
-       'nvim-lualine/lualine.nvim',
-       -- See `:help lualine.txt`
-       opts = {
-         options = {
-           icons_enabled = false,
-           theme = 'onedark',
-           component_separators = '|',
-           section_separators = '',
-         },
-       },
-     },
+  {
+    -- Set lualine as statusline
+    'nvim-lualine/lualine.nvim',
+    -- See `:help lualine.txt`
+    opts = {
+      options = {
+        icons_enabled = false,
+        theme = 'onedark',
+        component_separators = '|',
+        section_separators = '',
+      },
+    },
+  },
 
 
   {
@@ -215,24 +209,30 @@ require('lazy').setup({
 }, {})
 
 
-  -- require('tabnine').setup({
-  --   disable_auto_comment = true,
-  --   accept_keymap = "<Tab>",
-  --   dismiss_keymap = "<C-]>",
-  --   debounce_ms = 800,
-  --   suggestion_color = { gui = "#808080", cterm = 244 },
-  --   exclude_filetypes = { "TelescopePrompt" }
-  -- })
+-- require('tabnine').setup({
+--   disable_auto_comment = true,
+--   accept_keymap = "<Tab>",
+--   dismiss_keymap = "<C-]>",
+--   debounce_ms = 800,
+--   suggestion_color = { gui = "#808080", cterm = 244 },
+--   exclude_filetypes = { "TelescopePrompt" }
+-- })
+require("toggleterm").setup{
+	direction = "horizontal",
+	size = 15,
+	open_mapping = [[<C-t>]]
+}
+
 require('lualine').setup({
-    tabline = {
-        lualine_a = {},
-        lualine_b = {'branch'},
-        lualine_c = {'filename'},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {}
-    },
-    -- sections = {lualine_c = {'lsp_progress'}, lualine_x = {'tabnine'}}
+  tabline = {
+    lualine_a = {},
+    lualine_b = { 'branch' },
+    lualine_c = { 'filename' },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  -- sections = {lualine_c = {'lsp_progress'}, lualine_x = {'tabnine'}}
 })
 -- [[ Setting options ]]
 -- See `:help vim.o`
