@@ -188,8 +188,8 @@ require('lazy').setup({
   },
 
   -- Nvim tree package. file sidebar tree
-  { 'nvim-tree/nvim-tree.lua',     opts = {} },
-  { 'nvim-tree/nvim-web-devicons', opts = {} },
+  -- { 'nvim-tree/nvim-tree.lua',     opts = {} },
+  -- { 'nvim-tree/nvim-web-devicons', opts = {} },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -280,6 +280,10 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- open netrw explorer:
+-- vim.keymap.set('n', '<leader>x', vim.cmd.Ex, {silent = true})
+vim.keymap.set('n', '<leader>x', ':Ex<cr>', {silent = true})
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -422,6 +426,7 @@ local on_attach = function(_, bufnr)
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
+
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
