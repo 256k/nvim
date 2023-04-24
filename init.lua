@@ -1,6 +1,5 @@
 --[[
-
-=====================================================================
+================================================================
 =======================  NEOVIM CONFIGURATION  ======================
 =====================================================================
 --]]
@@ -10,11 +9,6 @@
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
--- Config settings for nvim-tree
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
--- ----------------------------
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -241,7 +235,8 @@ require('lualine').setup({
 vim.o.hlsearch = false
 
 -- Make line numbers default
-vim.wo.number = true
+-- vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -264,7 +259,7 @@ vim.o.smartcase = true
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
 
--- Decrease update time
+-- Decrease update time,
 vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
@@ -281,9 +276,14 @@ vim.o.termguicolors = true
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- open netrw explorer:
--- vim.keymap.set('n', '<leader>x', vim.cmd.Ex, {silent = true})
-vim.keymap.set('n', '<leader>x', ':Ex<cr>', {silent = true})
+-- toggle netrw explorer:
+vim.keymap.set('n', '<leader>ff', ':Rex<cr>', {silent = true})
+
+-- quick save file
+vim.keymap.set('n', '<leader>fs', ':w<cr>', {silent = true})
+
+-- quick quit file
+vim.keymap.set('n', '<leader>fq', ':q<cr>', {silent = true})
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
