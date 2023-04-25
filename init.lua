@@ -11,7 +11,6 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Install package manager
---    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -26,11 +25,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
 require('lazy').setup({
 
   -- Git related plugins
@@ -40,35 +34,37 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  {'akinsho/toggleterm.nvim', version = "*", config = true},
+  -- a toggle terminal popup window (Ctrl-t)
+  { 'akinsho/toggleterm.nvim', version = "*", config = true },
+
+
   --  The configuration is done below. Search for lspconfig to find it below.
-  {
-    -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
-
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
-    },
-  },
+  -- {
+  --   -- LSP Configuration & Plugins
+  --   'neovim/nvim-lspconfig',
+  --   dependencies = {
+  --     -- Automatically install LSPs to stdpath for neovim
+  --     'williamboman/mason.nvim',
+  --     'williamboman/mason-lspconfig.nvim',
+  --
+  --     -- Useful status updates for LSP
+  --     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+  --     { 'j-hui/fidget.nvim', opts = {} },
+  --
+  --     -- Additional lua configuration, makes nvim stuff amazing!
+  --     'folke/neodev.nvim',
+  --   },
+  -- },
   { 'simrat39/rust-tools.nvim' },
 
-  {
-    -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-  },
+  -- {
+  --   -- Autocompletion
+  --   'hrsh7th/nvim-cmp',
+  --   dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+  -- },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',    opts = {} },
+  { 'folke/which-key.nvim',     opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -85,6 +81,7 @@ require('lazy').setup({
   },
 
 
+  -- LSP SETUP
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -101,19 +98,27 @@ require('lazy').setup({
       { 'hrsh7th/cmp-path' },         -- Optional
       { 'saadparwaiz1/cmp_luasnip' }, -- Optional
       { 'hrsh7th/cmp-nvim-lua' },     -- Optional
+      { 'folke/neodev.nvim'},
 
-      -- Snippets
+    -- Snippets
       { 'L3MON4D3/LuaSnip' },             -- Required
       { 'rafamadriz/friendly-snippets' }, -- Optional
     }
   },
 
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
+
+  { "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'gruvbox'
     end,
   },
 
@@ -124,7 +129,8 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        -- theme = 'onedark',
+        theme = 'gruvbox',
         component_separators = '|',
         section_separators = '',
       },
@@ -132,18 +138,17 @@ require('lazy').setup({
   },
 
 
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    config = function()
-      vim.cmd.colorscheme 'catppuccin-frappe'
-    end,
-  },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   config = function()
+  --     vim.cmd.colorscheme 'catppuccin-frappe'
+  --   end,
+  -- },
 
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     opts = {
       char = '┊',
@@ -181,53 +186,15 @@ require('lazy').setup({
     end,
   },
 
-  -- Nvim tree package. file sidebar tree
-  -- { 'nvim-tree/nvim-tree.lua',     opts = {} },
-  -- { 'nvim-tree/nvim-web-devicons', opts = {} },
-
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
-
-  -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  --
-  --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
-  --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
-  -- { import = 'custom.plugins' },
 }, {})
 
 
--- require('tabnine').setup({
---   disable_auto_comment = true,
---   accept_keymap = "<Tab>",
---   dismiss_keymap = "<C-]>",
---   debounce_ms = 800,
---   suggestion_color = { gui = "#808080", cterm = 244 },
---   exclude_filetypes = { "TelescopePrompt" }
--- })
-require("toggleterm").setup{
-	direction = "horizontal",
-	size = 15,
-	open_mapping = [[<C-t>]]
+require("toggleterm").setup {
+  direction = "horizontal",
+  size = 15,
+  open_mapping = [[<C-t>]]
 }
 
-require('lualine').setup({
-  tabline = {
-    lualine_a = {},
-    lualine_b = { 'branch' },
-    lualine_c = { 'filename' },
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  -- sections = {lualine_c = {'lsp_progress'}, lualine_x = {'tabnine'}}
-})
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -277,13 +244,13 @@ vim.o.termguicolors = true
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- toggle netrw explorer:
-vim.keymap.set('n', '<leader>ff', ':Rex<cr>', {silent = true})
+vim.keymap.set('n', '<leader>ff', ':Rex<cr>', { silent = true })
 
 -- quick save file
-vim.keymap.set('n', '<leader>fs', ':w<cr>', {silent = true})
+vim.keymap.set('n', '<leader>fs', ':w<cr>', { silent = true })
 
 -- quick quit file
-vim.keymap.set('n', '<leader>fq', ':q<cr>', {silent = true})
+vim.keymap.set('n', '<leader>fq', ':q<cr>', { silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -340,7 +307,7 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'help', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
+  auto_install = true,
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -462,11 +429,9 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
+  clangd = {},
+  rust_analyzer = {},
+  tsserver = {},
 
   lua_ls = {
     Lua = {
@@ -523,7 +488,7 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
+    ['<C-j>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -532,7 +497,7 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
+    ['<C-k>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -547,6 +512,5 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
