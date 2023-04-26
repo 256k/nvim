@@ -252,6 +252,9 @@ vim.keymap.set('n', '<leader>fs', ':w<cr>', { silent = true })
 -- quick quit file
 vim.keymap.set('n', '<leader>fq', ':q<cr>', { silent = true })
 
+-- quick settings
+vim.keymap.set('n', '<leader>,', ':tabfind ~/.config/nvim/init.lua<cr>', { silent = true })
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
