@@ -64,7 +64,7 @@ require('lazy').setup({
   -- },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',     opts = {} },
+  { 'folke/which-key.nvim',    opts = {} },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -98,9 +98,9 @@ require('lazy').setup({
       { 'hrsh7th/cmp-path' },         -- Optional
       { 'saadparwaiz1/cmp_luasnip' }, -- Optional
       { 'hrsh7th/cmp-nvim-lua' },     -- Optional
-      { 'folke/neodev.nvim'},
+      { 'folke/neodev.nvim' },
 
-    -- Snippets
+      -- Snippets
       { 'L3MON4D3/LuaSnip' },             -- Required
       { 'rafamadriz/friendly-snippets' }, -- Optional
     }
@@ -115,7 +115,8 @@ require('lazy').setup({
   --   end,
   -- },
 
-  { "ellisonleao/gruvbox.nvim",
+  {
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'gruvbox'
@@ -134,6 +135,10 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
+      sections = {
+      lualine_c = {{'filename', path = 1 }}
+      
+  },
     },
   },
 
@@ -153,6 +158,8 @@ require('lazy').setup({
     opts = {
       char = '┊',
       show_trailing_blankline_indent = false,
+      show_current_context = true,
+      show_current_context_start = true,
     },
   },
 
@@ -187,7 +194,6 @@ require('lazy').setup({
   },
 
 }, {})
-
 
 require("toggleterm").setup {
   direction = "horizontal",
@@ -244,16 +250,19 @@ vim.o.termguicolors = true
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- toggle netrw explorer:
-vim.keymap.set('n', '<leader>ff', ':Rex<cr>', { silent = true })
+vim.keymap.set('n', '<leader>ff', ':Rex<cr>', { desc = "toggle file explorer", silent = true })
 
 -- quick save file
-vim.keymap.set('n', '<leader>fs', ':w<cr>', { silent = true })
+vim.keymap.set('n', '<leader>fs', ':w<cr>', { desc = "quick save file", silent = true })
 
 -- quick quit file
-vim.keymap.set('n', '<leader>fq', ':q<cr>', { silent = true })
+vim.keymap.set('n', '<leader>fq', ':q<cr>', { desc = "quick quit file", silent = true })
+
+-- quick quit file
+vim.keymap.set('n', '<leader>fQ', ':q!<cr>', { desc = "quick force quit file", silent = true })
 
 -- quick settings
-vim.keymap.set('n', '<leader>,', ':tabfind ~/.config/nvim/init.lua<cr>', { silent = true })
+vim.keymap.set('n', '<leader>,', ':tabfind ~/.config/nvim/init.lua<cr>', { desc = "quick force quit file", silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -369,11 +378,6 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- nvim tree keymaps:
-
-vim.keymap.set('n', '<C-b>', ":NvimTreeToggle<cr>")
-vim.keymap.set('n', '<C-n>', ":NvimTreeFindFile<cr>")
-
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
@@ -435,7 +439,6 @@ local servers = {
   clangd = {},
   rust_analyzer = {},
   tsserver = {},
-
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
