@@ -106,23 +106,35 @@ require('lazy').setup({
     }
   },
 
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
-
+  -- ==================================================
+  -- ==================== THEMES ====================== 
+  -- ==================================================
   {
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'gruvbox'
-    end,
+    -- Theme inspired by Atom
+    'navarasu/onedark.nvim',
+    name = "onedark",
+    -- config = function()
+    --   vim.cmd.colorscheme 'onedark'
+    -- end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    -- config = function()
+    --   vim.cmd.colorscheme 'catppuccin-frappe'
+    -- end,
   },
 
+  { "ellisonleao/gruvbox.nvim",
+    name = "gruvbox",
+    -- config = function()
+    --   vim.cmd.colorscheme 'gruvbox'
+    -- end,
+  },
+  {"huyvohcmc/atlas.vim"},
+  {'NLKNguyen/papercolor-theme'},
+  {'ishan9299/modus-theme-vim'},
+  {'frenzyexists/aquarium-vim'},
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -131,7 +143,8 @@ require('lazy').setup({
       options = {
         icons_enabled = false,
         -- theme = 'onedark',
-        theme = 'gruvbox',
+        -- theme = 'gruvbox',
+        theme='auto',
         component_separators = '|',
         section_separators = '',
       },
@@ -143,13 +156,6 @@ require('lazy').setup({
   },
 
 
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   config = function()
-  --     vim.cmd.colorscheme 'catppuccin-frappe'
-  --   end,
-  -- },
 
   {
     -- Add indentation guides even on blank lines
@@ -195,6 +201,15 @@ require('lazy').setup({
 
 }, {})
 
+<<<<<<< Updated upstream
+=======
+  vim.cmd.colorscheme 'papercolor'
+-- Set Theme:
+  vim.o.background= "dark"
+  vim.cmd.colorscheme 'gruvbox'
+
+
+>>>>>>> Stashed changes
 require("toggleterm").setup {
   direction = "horizontal",
   size = 15,
@@ -494,7 +509,7 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<C-j>'] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -503,7 +518,7 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
-    ['<C-k>'] = cmp.mapping(function(fallback)
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
