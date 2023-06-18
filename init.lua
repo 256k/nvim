@@ -201,15 +201,12 @@ require('lazy').setup({
 
 }, {})
 
-<<<<<<< Updated upstream
-=======
   vim.cmd.colorscheme 'papercolor'
 -- Set Theme:
   vim.o.background= "dark"
   vim.cmd.colorscheme 'gruvbox'
 
 
->>>>>>> Stashed changes
 require("toggleterm").setup {
   direction = "horizontal",
   size = 15,
