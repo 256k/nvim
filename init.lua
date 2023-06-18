@@ -150,7 +150,6 @@ require('lazy').setup({
       },
       sections = {
       lualine_c = {{'filename', path = 1 }}
-      
   },
     },
   },
@@ -201,10 +200,9 @@ require('lazy').setup({
 
 }, {})
 
-  vim.cmd.colorscheme 'papercolor'
 -- Set Theme:
   vim.o.background= "dark"
-  vim.cmd.colorscheme 'gruvbox'
+  vim.cmd.colorscheme 'catppuccin-macchiato'
 
 
 require("toggleterm").setup {
