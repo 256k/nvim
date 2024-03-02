@@ -12,6 +12,7 @@ vim.g.maplocalleader = ' '
 
 -- Install package manager
 --    `:help lazy.nvim.txt` for more info
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -23,53 +24,18 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-
-  -- Git related plugins
-  'tpope/vim-fugitive',
+  'tpope/vim-fugitive',                                        -- Git related plugins
   'tpope/vim-rhubarb',
-
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
-
-  -- a toggle terminal popup window (Ctrl-t)
-  { 'akinsho/toggleterm.nvim', version = "*", config = true },
-
-
-  --  The configuration is done below. Search for lspconfig to find it below.
-  -- {
-  --   -- LSP Configuration & Plugins
-  --   'neovim/nvim-lspconfig',
-  --   dependencies = {
-  --     -- Automatically install LSPs to stdpath for neovim
-  --     'williamboman/mason.nvim',
-  --     'williamboman/mason-lspconfig.nvim',
-  --
-  --     -- Useful status updates for LSP
-  --     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-  --     { 'j-hui/fidget.nvim', opts = {} },
-  --
-  --     -- Additional lua configuration, makes nvim stuff amazing!
-  --     'folke/neodev.nvim',
-  --   },
-  -- },
-  { 'simrat39/rust-tools.nvim' },
-
-  -- {
-  --   -- Autocompletion
-  --   'hrsh7th/nvim-cmp',
-  --   dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-  -- },
-
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',    opts = {} },
+  'tpope/vim-sleuth',                                          -- Detect tabstop and shiftwidth automatically
+  { 'akinsho/toggleterm.nvim', version = "*", config = true }, -- a toggle terminal popup window (Ctrl-t)
+  { 'folke/which-key.nvim',    opts = {} },                    -- Useful plugin to show you pending keybinds.
   {
-    -- Adds git releated signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
+    'lewis6991/gitsigns.nvim',                                 -- Adds git releated signs to the gutter, as well as utilities for managing changes
+    opts = {                                                   -- See `:help gitsigns.txt`
       signs = {
         add = { text = '+' },
         change = { text = '*' },
@@ -80,8 +46,9 @@ require('lazy').setup({
     },
   },
 
-
-  -- LSP SETUP
+  -- ======================================================
+  -- ===================== LSP SETUP ======================
+  -- ======================================================
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -96,76 +63,58 @@ require('lazy').setup({
       { 'hrsh7th/cmp-nvim-lsp' },     -- Required
       { 'hrsh7th/cmp-buffer' },       -- Optional
       { 'hrsh7th/cmp-path' },         -- Optional
-      { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+      -- { 'saadparwaiz1/cmp_luasnip' }, -- Optional
       { 'hrsh7th/cmp-nvim-lua' },     -- Optional
       { 'folke/neodev.nvim' },
 
       -- Snippets
-      { 'L3MON4D3/LuaSnip' },             -- Required
+      -- { 'L3MON4D3/LuaSnip' },             -- Required
       { 'rafamadriz/friendly-snippets' }, -- Optional
     }
   },
 
   -- ==================================================
-  -- ==================== THEMES ====================== 
+  -- ==================== THEMES ======================
   -- ==================================================
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     name = "onedark",
-    -- config = function()
-    --   vim.cmd.colorscheme 'onedark'
-    -- end,
+    config = function()
+      vim.cmd.colorscheme 'onedark'
+    end,
   },
+  { "huyvohcmc/atlas.vim" },
+  { 'NLKNguyen/papercolor-theme' },
+  { 'ishan9299/modus-theme-vim' },
+  { 'frenzyexists/aquarium-vim' },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    -- config = function()
-    --   vim.cmd.colorscheme 'catppuccin-frappe'
-    -- end,
-  },
-
-  { "ellisonleao/gruvbox.nvim",
-    name = "gruvbox",
-    -- config = function()
-    --   vim.cmd.colorscheme 'gruvbox'
-    -- end,
-  },
-  {"huyvohcmc/atlas.vim"},
-  {'NLKNguyen/papercolor-theme'},
-  {'ishan9299/modus-theme-vim'},
-  {'frenzyexists/aquarium-vim'},
-  {
-    -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
+    'nvim-lualine/lualine.nvim', -- Set lualine as statusline -- See `:help lualine.txt`
     opts = {
       options = {
         icons_enabled = false,
-        -- theme = 'onedark',
+        theme = 'onedark',
         -- theme = 'gruvbox',
-        theme='auto',
+        -- theme='auto',
         component_separators = '|',
         section_separators = '',
       },
       sections = {
-      lualine_c = {{'filename', path = 1 }}
-  },
+        lualine_c = { { 'filename', path = 1 } }
+      },
     },
   },
 
-
-
   {
     -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
+ "lukas-reineke/indent-blankline.nvim",
     -- See `:help indent_blankline.txt`
-    version = "2.20.7",
+    main = "ibl",
     opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-      show_current_context = true,
-      show_current_context_start = true,
+      -- char = '┊',
+      -- show_trailing_blankline_indent = false,
+      -- show_current_context = true,
+      -- show_current_context_start = true,
     },
   },
 
@@ -201,10 +150,6 @@ require('lazy').setup({
 
 }, {})
 
--- Set Theme:
-  vim.o.background= "dark"
-  vim.cmd.colorscheme 'catppuccin-macchiato'
-
 
 require("toggleterm").setup {
   direction = "horizontal",
@@ -214,67 +159,32 @@ require("toggleterm").setup {
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
-
--- Set highlight on search
-vim.o.hlsearch = false
-
--- Make line numbers default
--- vim.wo.number = true
+vim.o.hlsearch = false          -- Set highlight on search
 vim.wo.relativenumber = true
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
+vim.o.mouse = 'a'               -- Enable mouse mode
+vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
+vim.o.breakindent = true        -- Enable break indent
+vim.o.undofile = true           -- Save undo history
+vim.o.ignorecase = true         -- Case insensitive searching UNLESS /C or capital in search
 vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- Decrease update time,
-vim.o.updatetime = 250
+vim.wo.signcolumn = 'yes'       -- Keep signcolumn on by default
+vim.o.updatetime = 250          -- Decrease update time,
 vim.o.timeout = true
 vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
+vim.o.termguicolors = true             -- NOTE: You should make sure your terminal supports this
 
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- toggle netrw explorer:
 vim.keymap.set('n', '<leader>ff', ':Rex<cr>', { desc = "toggle file explorer", silent = true })
-
--- quick save file
 vim.keymap.set('n', '<leader>fs', ':w<cr>', { desc = "quick save file", silent = true })
-
--- quick quit file
 vim.keymap.set('n', '<leader>fq', ':q<cr>', { desc = "quick quit file", silent = true })
-
--- quick quit file
 vim.keymap.set('n', '<leader>fQ', ':q!<cr>', { desc = "quick force quit file", silent = true })
-
--- quick settings
-vim.keymap.set('n', '<leader>,', ':tabfind ~/.config/nvim/init.lua<cr>', { desc = "quick force quit file", silent = true })
-
+vim.keymap.set('n', '<leader>,', ':tabfind ~/.config/nvim/init.lua<cr>',
+  { desc = "quick force quit file", silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -415,7 +325,6 @@ local on_attach = function(_, bufnr)
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
@@ -487,14 +396,14 @@ mason_lspconfig.setup_handlers {
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+-- local luasnip = require 'luasnip'
 
-luasnip.config.setup {}
+-- luasnip.config.setup {}
 
 cmp.setup {
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      -- luasnip.lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert {
@@ -508,8 +417,8 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+      -- elseif luasnip.expand_or_jumpable() then
+        -- luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -517,8 +426,8 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      -- elseif luasnip.jumpable(-1) then
+        -- luasnip.jump(-1)
       else
         fallback()
       end
@@ -526,7 +435,7 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    -- { name = 'luasnip' },
   },
 }
 -- The line beneath this is called `modeline`. See `:help modeline`
