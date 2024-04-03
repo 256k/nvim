@@ -167,7 +167,7 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagn
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- 256k bindings:
-vim.keymap.set("n", "<leader>ff", ":Rex<cr>", { desc = "toggle file explorer", silent = true })
+vim.keymap.set("n", "<leader>ff", ":Ex<cr>", { desc = "toggle file explorer", silent = true })
 vim.keymap.set("n", "<leader>fs", ":w<cr>", { desc = "quick save file", silent = true })
 vim.keymap.set("n", "<leader>fq", ":q<cr>", { desc = "quick quit file", silent = true })
 vim.keymap.set("n", "<leader>fQ", ":q!<cr>", { desc = "quick force quit file", silent = true })
