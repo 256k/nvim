@@ -166,6 +166,17 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+-- 256k bindings:
+vim.keymap.set("n", "<leader>ff", ":Rex<cr>", { desc = "toggle file explorer", silent = true })
+vim.keymap.set("n", "<leader>fs", ":w<cr>", { desc = "quick save file", silent = true })
+vim.keymap.set("n", "<leader>fq", ":q<cr>", { desc = "quick quit file", silent = true })
+vim.keymap.set("n", "<leader>fQ", ":q!<cr>", { desc = "quick force quit file", silent = true })
+vim.keymap.set(
+	"n",
+	"<leader>,",
+	":tabfind ~/.config/nvim/init.lua<cr>",
+	{ desc = "quick force quit file", silent = true }
+)
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -236,6 +247,9 @@ require("lazy").setup({
 	--  This is equivalent to:
 	--    require('Comment').setup({})
 
+	"tpope/vim-fugitive", -- Git related plugins
+	"tpope/vim-rhubarb",
+	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	-- "gc" to comment visual regions/lines
 	{ "numToStr/Comment.nvim", opts = {} },
 	{ "tpope/vim-rsi" },
